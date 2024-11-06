@@ -1,0 +1,9 @@
+#navigationBar {
+  height: var(--navbar-height);
+  background-color: var(--transparent-light);
+}
+
+// Override Bootstrap
+.nav-link {
+  padding: 0;
+}
