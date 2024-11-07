@@ -1,9 +1,55 @@
 #navigationBar {
   height: var(--navbar-height);
   background-color: var(--transparent-light);
+  font-size: 1.1rem;
+}
+
+#navigationBar-brand {
+  margin-left: 1rem;
+  font-size: 1.3rem;
+}
+
+#navigationBar-toggle {
+  margin-right: 1rem;
+  &:focus, &:active {
+    outline: none;
+    box-shadow: none;
+  }
 }
 
 // Override Bootstrap
-.nav-link {
+#basic-navbar-nav {
+  background-color: var(--transparent-light);
+  > div > a, > div > div > a {
+    padding: 0.5rem 1rem;
+  }
+}
+
+.dropdown-menu {
   padding: 0;
+  > hr {
+    margin: 0;
+  }
+}
+
+.dropdown-item {
+  padding: 0.5rem;
+}
+
+/* Medium devices such as tablets (768px and up) */
+@media only screen and (min-width: 768px) {
+  #basic-navbar-nav {
+    > div > a, > div > div > a {
+      padding: 0.5rem;
+    }
+  }
+}
+
+/* Largest devices such as desktops (1280px and up) */
+@media only screen and (min-width: 1280px) {
+  #basic-navbar-nav {
+    > div > a, > div > div > a {
+      padding: 0.5rem;
+    }
+  }
 }
