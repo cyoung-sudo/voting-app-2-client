@@ -17,9 +17,9 @@ const NavigationBar = () => {
           <Nav className="me-auto">
             <NavDropdown title="Users" id="basic-nav-dropdown">
               <NavDropdown.Item>
-              <LinkContainer to="/users">
-                <Nav.Link>Users</Nav.Link>
-              </LinkContainer>
+                <LinkContainer to="/users">
+                  <Nav.Link>Users</Nav.Link>
+                </LinkContainer>
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item>
@@ -41,17 +41,13 @@ const NavigationBar = () => {
                 </LinkContainer>
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#home">
-              <LinkContainer to="/auth/signup">
-                <Nav.Link>Signup</Nav.Link>
-              </LinkContainer>
-            </Nav.Link>
-            <Nav.Link href="#home">
-              <LinkContainer to="/auth/login">
-                <Nav.Link>Login</Nav.Link>
-              </LinkContainer>
-            </Nav.Link>
-            <Nav.Link href="#home">Logout</Nav.Link>
+            <LinkContainer to="/auth/signup">
+              <Nav.Link>Signup</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/auth/login">
+              <Nav.Link>Login</Nav.Link>
+            </LinkContainer>
+            <Nav.Link href="/">Logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
