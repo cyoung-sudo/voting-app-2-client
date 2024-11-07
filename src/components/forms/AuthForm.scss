@@ -1,0 +1,29 @@
+#authForm {
+  border-radius: var(--border-radius);
+  background-color: var(--transparent-dark);
+  .authForm-group {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1rem 0 1rem;
+    > label {
+      margin: 0 0 0.3rem 0.3rem;
+    }
+    > input {
+      padding: 0.3rem 0.5rem;
+      border: 1px solid gray;
+      border-radius: var(--border-radius);
+    }
+  }
+  .authForm-submit {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 1rem;
+    > button {
+      border: 0;
+      border-top-left-radius: var(--border-radius);
+      border-bottom-right-radius: var(--border-radius);
+      background-color: var(--theme-color-1);
+      color: white;
+    }
+  }
+}
