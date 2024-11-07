@@ -16,37 +16,33 @@ const NavigationBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <NavDropdown title="Users" id="basic-nav-dropdown">
-              <NavDropdown.Item>
-                <LinkContainer to="/users">
-                  <Nav.Link>Users</Nav.Link>
-                </LinkContainer>
-              </NavDropdown.Item>
+              <LinkContainer to="/users">
+                <NavDropdown.Item>Users</NavDropdown.Item>
+              </LinkContainer>
               <NavDropdown.Divider />
-              <NavDropdown.Item>
-                <LinkContainer to="/users/1">
-                  <Nav.Link>Profile</Nav.Link>
-                </LinkContainer>
-              </NavDropdown.Item>
+              <LinkContainer to="/users/1">
+                <NavDropdown.Item>Profile</NavDropdown.Item>
+              </LinkContainer>
             </NavDropdown>
+
             <NavDropdown title="Polls" id="basic-nav-dropdown">
-              <NavDropdown.Item>
-                <LinkContainer to="/polls">
-                  <Nav.Link>All Polls</Nav.Link>
-                </LinkContainer>
-              </NavDropdown.Item>
+              <LinkContainer to="/polls">
+                <NavDropdown.Item>All Polls</NavDropdown.Item>
+              </LinkContainer>
               <NavDropdown.Divider />
-              <NavDropdown.Item>
-                <LinkContainer to="/polls/new">
-                  <Nav.Link>New Poll</Nav.Link>
-                </LinkContainer>
-              </NavDropdown.Item>
+              <LinkContainer to="/polls/new">
+                <NavDropdown.Item>New Poll</NavDropdown.Item>
+              </LinkContainer>
             </NavDropdown>
+
             <LinkContainer to="/auth/signup">
               <Nav.Link>Signup</Nav.Link>
             </LinkContainer>
+
             <LinkContainer to="/auth/login">
               <Nav.Link>Login</Nav.Link>
             </LinkContainer>
+            
             <Nav.Link href="/">Logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>

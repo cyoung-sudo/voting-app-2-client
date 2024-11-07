@@ -1,19 +1,34 @@
 import "./Signup.scss";
 // React
 import { useState } from "react";
+// Routing
+import { useNavigate } from "react-router-dom";
 // Components
 import AuthForm from "../../components/forms/AuthForm";
+// APIs
+import UserAPI from "../../apis/UserAPI";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  // Hooks
+  const navigate = useNavigate();
 
   const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(username);
-    console.log(password);
-    setUsername("");
-    setPassword("");
+    UserAPI.create(username, password)
+    .then(res => {
+      if(res.data.success) {
+        console.log("Created User")
+        navigate("/auth/login");
+      } else {
+        console.log(res.data.message)
+        // Reset input fields
+        setUsername("");
+        setPassword("");
+      }
+    })
+    .catch(err => console.log(err));
   }
 
   return(

@@ -24,7 +24,7 @@ const AuthForm: React.FC<AuthFormProps> = ({username, password, setUsername, set
         <input 
           onChange={e => setPassword(e.target.value)}
           value={password}
-          type="text" 
+          type="password" 
           id="authForm-password"/>
       </div>
       <div className="authForm-submit">
