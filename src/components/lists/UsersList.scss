@@ -1,0 +1,30 @@
+#usersList {
+  padding: 0;
+  list-style: none;
+  > li {
+    margin-bottom: 1rem;
+    border: 0.9px solid var(--theme-color-1);
+    border-radius: var(--border-radius);
+    background-color: var(--transparent-dark);
+    .usersList-username {
+      padding: 1rem 1rem 0 1rem;
+      font-size: 1.2rem;
+    }
+    .usersList-date {
+      padding: 0.3rem 1rem 0 1rem;
+      font-weight: 300;
+    }
+    .usersList-btns {
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 1rem;
+      > button {
+        border: 0;
+        border-top-left-radius: var(--border-radius);
+        border-bottom-right-radius: var(--border-radius);
+        background-color: var(--theme-color-1);
+        color: white;
+      }
+    }
+  }
+}

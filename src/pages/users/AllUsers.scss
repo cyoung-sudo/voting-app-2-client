@@ -1,0 +1,29 @@
+#allUsers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+#allUsers-header {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+#allUsers-list {
+  width: 90vw;
+}
+
+/* Medium devices such as tablets (768px and up) */
+@media only screen and (min-width: 768px) {
+  #allUsers-list {
+    width: 60vw;
+  }
+}
+
+/* Largest devices such as desktops (1280px and up) */
+@media only screen and (min-width: 1280px) {
+  #allUsers-list {
+    width: 30vw;
+  }
+}

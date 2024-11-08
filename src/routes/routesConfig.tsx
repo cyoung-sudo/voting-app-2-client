@@ -10,6 +10,8 @@ import NewPoll from "../pages/polls/NewPoll";
 import ShowPoll from "../pages/polls/ShowPoll";
 // Components
 import Layout from "../components/wrappers/Layout";
+// Loaders
+import { allUsersloader } from "./loaders";
 
 export const routesConfig = [
   { element: <Layout/>, children: [
@@ -37,6 +39,7 @@ export const routesConfig = [
           { 
             index: true,
             element: <AllUsers/>,
+            loader: allUsersloader
           },
           { 
             path: ":userId",
