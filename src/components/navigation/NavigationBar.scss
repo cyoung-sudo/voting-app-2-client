@@ -20,8 +20,17 @@
 // Override Bootstrap
 #basic-navbar-nav {
   background-color: var(--transparent-light);
-  > div > a, > div > div > a {
+  .active {
+    font-weight: bold;
+  }
+  > div > a, > div > button, > div > div > a {
     padding: 0.5rem 1rem;
+  }
+  > div > button {
+    border: none;
+    background: none;
+    color: rgba(0, 0, 0, 0.65);
+    text-align: left;
   }
 }
 
@@ -39,7 +48,7 @@
 /* Medium devices such as tablets (768px and up) */
 @media only screen and (min-width: 768px) {
   #basic-navbar-nav {
-    > div > a, > div > div > a {
+    > div > a, > div > button, > div > div > a {
       padding: 0.5rem;
     }
   }
@@ -48,7 +57,7 @@
 /* Largest devices such as desktops (1280px and up) */
 @media only screen and (min-width: 1280px) {
   #basic-navbar-nav {
-    > div > a, > div > div > a {
+    > div > a, > div > button, > div > div > a {
       padding: 0.5rem;
     }
   }
