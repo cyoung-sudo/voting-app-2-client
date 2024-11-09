@@ -11,7 +11,7 @@ import ShowPoll from "../pages/polls/ShowPoll";
 // Components
 import Layout from "../components/wrappers/Layout";
 // Loaders
-import { allUsersloader, allPollsLoader } from "./loaders";
+import { allUsersloader, allPollsLoader, profileLoader } from "./loaders";
 
 export const routesConfig = [
   { element: <Layout/>, children: [
@@ -44,6 +44,7 @@ export const routesConfig = [
           { 
             path: ":userId",
             element: <Profile/>,
+            loader: profileLoader
           }
         ]
       },

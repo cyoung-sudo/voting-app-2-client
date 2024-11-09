@@ -1,4 +1,6 @@
 import "./UsersList.scss";
+// Routing
+import { useNavigate } from "react-router-dom";
 // Types
 import { User } from "../../types/index.ds";
 // Animation
@@ -9,6 +11,8 @@ interface UsersListProps {
 }
 
 const UsersList: React.FC<UsersListProps> = ({users}) => {
+  // Hooks
+  const navigate = useNavigate();
   // Animation
   const listA = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { delayChildren: 0.3 } } }
   const itemA = { hidden: { opacity: 0, y: -200 }, show: { opacity: 1, y: 0 } }
@@ -20,7 +24,9 @@ const UsersList: React.FC<UsersListProps> = ({users}) => {
           <div className="usersList-username">{user.username}</div>
           <div className="usersList-date">Joined: {new Date(user.createdAt).toDateString()}</div>
           <div className="usersList-btns">
-            <button className="btn-styling">View</button>
+            <button className="btn-styling" onClick={() => navigate(`/users/${user._id}`)}>
+              View
+            </button>
           </div>
         </motion.li>
       ))}

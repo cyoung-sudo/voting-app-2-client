@@ -11,7 +11,7 @@ const UserAPI = {
 
     return res;
   },
-  
+
   //----- Create user
   create: async (username: string, password: string) => {
     const res = await api.request({
@@ -21,6 +21,17 @@ const UserAPI = {
         password
       },
       url: "/api/users",
+      baseURL
+    });
+
+    return res;
+  },
+
+  //----- Retrieve user
+  getUser: async (userId: string) => {
+    const res = await api.request({
+      method: "GET",
+      url: `/api/users/${userId}`,
       baseURL
     });
 

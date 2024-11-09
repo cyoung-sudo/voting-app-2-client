@@ -48,6 +48,7 @@
 /* Medium devices such as tablets (768px and up) */
 @media only screen and (min-width: 768px) {
   #basic-navbar-nav {
+    background: none;
     > div > a, > div > button, > div > div > a {
       padding: 0.5rem;
     }
@@ -57,6 +58,7 @@
 /* Largest devices such as desktops (1280px and up) */
 @media only screen and (min-width: 1280px) {
   #basic-navbar-nav {
+    background: none;
     > div > a, > div > button, > div > div > a {
       padding: 0.5rem;
     }
