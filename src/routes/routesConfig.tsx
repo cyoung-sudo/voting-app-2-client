@@ -11,7 +11,7 @@ import ShowPoll from "../pages/polls/ShowPoll";
 // Components
 import Layout from "../components/wrappers/Layout";
 // Loaders
-import { allUsersloader } from "./loaders";
+import { allUsersloader, allPollsLoader } from "./loaders";
 
 export const routesConfig = [
   { element: <Layout/>, children: [
@@ -52,7 +52,8 @@ export const routesConfig = [
         children: [
           { 
             index: true,
-            element: <AllPolls/>
+            element: <AllPolls/>,
+            loader: allPollsLoader
           },
           { 
             path: "new",

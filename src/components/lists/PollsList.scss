@@ -1,0 +1,61 @@
+#pollsList {
+  padding: 0;
+  list-style: none;
+  > li {
+    margin-bottom: 1rem;
+    border: 0.9px solid var(--theme-color-1);
+    border-radius: var(--border-radius);
+    background-color: var(--transparent-dark);
+    .pollsList-title {
+      padding: 1rem 1rem 0 1rem;
+      font-size: 1.2rem;
+    }
+    .pollsList-desc {
+      padding: 0.3rem 1rem 0 1rem;
+    }
+    .pollsList-choices {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0 1rem 0 1rem;
+      list-style: none;
+      > li {
+        margin: 0.3rem 0.5rem 0 0;
+        padding: 0.1rem 0.3rem;
+        border-radius: var(--border-radius);
+        background-color: var(--theme-color-1);
+        color: white;
+        font-weight: 300;
+      }
+    }
+    .pollsList-status {
+      padding: 0.3rem 1rem 0 1rem;
+      font-weight: 300;
+      font-size: 0.9rem;
+      .success {
+        font-weight: bold;
+        color: green;
+      }
+      .fail {
+        font-weight: bold;
+        color: red;
+      }
+    }
+    .pollsList-date {
+      padding: 0.3rem 1rem 0 1rem;
+      font-weight: 300;
+      font-size: 0.9rem;
+    }
+    .pollsList-btns {
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 1rem;
+      > button {
+        border: 0;
+        border-top-left-radius: var(--border-radius);
+        border-bottom-right-radius: var(--border-radius);
+        background-color: var(--theme-color-1);
+        color: white;
+      }
+    }
+  }
+}
