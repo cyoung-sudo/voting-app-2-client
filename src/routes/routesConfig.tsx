@@ -11,7 +11,7 @@ import ShowPoll from "../pages/polls/ShowPoll";
 // Components
 import Layout from "../components/wrappers/Layout";
 // Loaders
-import { allUsersloader, allPollsLoader, profileLoader } from "./loaders";
+import { allUsersloader, allPollsLoader, profileLoader, showPollLoader } from "./loaders";
 
 export const routesConfig = [
   { element: <Layout/>, children: [
@@ -64,7 +64,7 @@ export const routesConfig = [
             path: "edit",
             children: [
               { 
-                path: ":postId",
+                path: ":pollId",
                 element: <EditPoll/>
               }
             ]
@@ -72,6 +72,7 @@ export const routesConfig = [
           { 
             path: ":pollId",
             element: <ShowPoll/>,
+            loader: showPollLoader
           }
         ]
       }

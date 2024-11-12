@@ -1,0 +1,35 @@
+#showPoll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+#showPoll-header {
+  margin-bottom: 1rem;
+}
+
+#showPoll-title {
+  font-size: 2rem;
+}
+
+#showPoll-chart {
+  height: 60vw;
+  width: 90vw;
+}
+
+/* Medium devices such as tablets (768px and up) */
+@media only screen and (min-width: 768px) {
+  #showPoll-chart {
+    height: 40vw;
+    width: 60vw;
+  }
+}
+
+/* Largest devices such as desktops (1280px and up) */
+@media only screen and (min-width: 1280px) {
+  #showPoll-chart {
+    height: 20vw;
+    width: 30vw;
+  }
+}

@@ -28,6 +28,17 @@ const PollAPI = {
     return res;
   },
 
+  //----- Retrieve given poll
+  getPoll: async (pollId: string) => {
+    const res = await api.request({
+      method: "GET",
+      url: `/api/polls/${pollId}`,
+      baseURL
+    });
+
+    return res;
+  },
+
   //----- Retrieve polls for given user
   getForUser: async (userId: string) => {
     const res = await api.request({

@@ -27,3 +27,10 @@ export const profileLoader = async ({params}: LoaderFunctionArgs) => {
     };
   }
 }
+
+export const showPollLoader = async ({params}: LoaderFunctionArgs) => {
+  if(params.pollId) {
+    const res = await PollAPI.getPoll(params.pollId);
+    return res.data.poll;
+  }
+}

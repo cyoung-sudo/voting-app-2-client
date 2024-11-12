@@ -1,4 +1,6 @@
 import "./PollsList.scss";
+// Routing
+import { useNavigate } from "react-router-dom";
 // Types
 import { Poll } from "../../types/index.ds";
 // Animation
@@ -9,6 +11,8 @@ interface PollsListProps {
 }
 
 const PollsList: React.FC<PollsListProps> = ({polls}) => {
+  // Hooks
+  const navigate = useNavigate();
   // Animation
   const listA = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { delayChildren: 0.3 } } }
   const itemA = { hidden: { opacity: 0, y: -200 }, show: { opacity: 1, y: 0 } }
@@ -31,7 +35,9 @@ const PollsList: React.FC<PollsListProps> = ({polls}) => {
           </div>
           <div className="pollsList-date">Joined: {new Date(poll.createdAt).toDateString()}</div>
           <div className="pollsList-btns">
-            <button className="btn-styling">View</button>
+            <button className="btn-styling" onClick={() => navigate(`/polls/${poll._id}`)}>
+              View
+            </button>
           </div>
         </motion.li>
       ))}
