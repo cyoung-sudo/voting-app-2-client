@@ -6,7 +6,8 @@
 }
 
 #showPoll-header {
-  margin-bottom: 1rem;
+  margin: 0 2rem 1rem 2rem;
+  text-align: center;
 }
 
 #showPoll-title {
@@ -14,22 +15,23 @@
 }
 
 #showPoll-chart {
-  height: 60vw;
-  width: 90vw;
+  height: 50vw;
+  width: 100vw;
+  margin-bottom: 1rem;
 }
 
 /* Medium devices such as tablets (768px and up) */
 @media only screen and (min-width: 768px) {
   #showPoll-chart {
     height: 40vw;
-    width: 60vw;
+    width: 80vw;
   }
 }
 
 /* Largest devices such as desktops (1280px and up) */
 @media only screen and (min-width: 1280px) {
   #showPoll-chart {
-    height: 20vw;
-    width: 30vw;
+    height: 30vw;
+    width: 60vw;
   }
 }

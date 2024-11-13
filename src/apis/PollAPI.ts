@@ -48,6 +48,21 @@ const PollAPI = {
     });
 
     return res;
+  },
+
+  //----- Vote on poll
+  vote: async (pollId: string, choice: string) => {
+    const res = await api.request({
+      method: "PUT",
+      url: "/api/polls/vote",
+      data: {
+        pollId,
+        choice
+      },
+      baseURL
+    });
+
+    return res;
   }
 };
 

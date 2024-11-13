@@ -1,0 +1,18 @@
+#voteForm {
+  display: flex;
+  align-items: center;
+  .voteForm-choices {
+    margin-right: 0.5rem;
+    &:focus {
+      outline: none;
+    }
+  }
+  .voteForm-submit {
+    > button {
+      border: none;
+      border-radius: var(--border-radius);
+      background-color: var(--theme-color-1);
+      color: white;
+    }
+  }
+}
