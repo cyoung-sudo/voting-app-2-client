@@ -30,7 +30,23 @@ export const profileLoader = async ({params}: LoaderFunctionArgs) => {
 
 export const showPollLoader = async ({params}: LoaderFunctionArgs) => {
   if(params.pollId) {
-    const res = await PollAPI.getPoll(params.pollId);
-    return res.data.poll;
+    const [res1, res2] = await Promise.all([
+      PollAPI.getPoll(params.pollId),
+      PollAPI.getVote(params.pollId)
+    ]);
+
+    // Authenticated
+    if(res2.data.success) {
+      return {
+        poll: res1.data.poll,
+        voted: res2.data.voted
+      };
+    // Not authenticated
+    } else {
+      return {
+        poll: res1.data.poll,
+        voted: null
+      };
+    }
   }
 }

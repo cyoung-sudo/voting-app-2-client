@@ -13,13 +13,18 @@ import { useAuth } from "../../hooks/AuthProvider";
 // Types
 import { Poll } from "../../types/index.ds";
 
+interface LoaderData {
+  poll: Poll;
+  voted: boolean | null;
+}
+
 const ShowPoll = () => {
   // Controlled Input
   const [choice, setChoice] = useState("");
   // Formatted Data
   const [chartData, setChartData] = useState<{ choice: string; count: number; }[]>([]);
   // Hooks
-  const poll = useLoaderData() as Poll;
+  const {poll, voted} = useLoaderData() as LoaderData;
   const auth = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -44,6 +49,8 @@ const ShowPoll = () => {
           console.log("voted");
           // Reload loader data
           navigate('.', { replace: true });
+        } else {
+          console.log(res.data.message);
         }
       })
       .catch(err => console.log(err));
@@ -63,12 +70,18 @@ const ShowPoll = () => {
         </div>
       }
 
-      <div id="showPoll-form">
-        <VoteForm
-          choices={poll.choices}
-          setChoice={setChoice}
-          submitForm={submitForm}/>
-      </div>
+      {auth.authUser && !voted &&
+        <div id="showPoll-form">
+          <VoteForm
+            choices={poll.choices}
+            setChoice={setChoice}
+            submitForm={submitForm}/>
+        </div>
+      }
+
+      {auth.authUser && voted &&
+        <div>Already voted</div>
+      }
     </div>
   )
 };

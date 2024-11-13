@@ -63,6 +63,17 @@ const PollAPI = {
     });
 
     return res;
+  },
+
+  //----- Check if user voted for poll
+  getVote: async (pollId: string) => {
+    const res = await api.request({
+      method: "GET",
+      url: `/api/polls/vote/poll/${pollId}`,
+      baseURL
+    });
+
+    return res;
   }
 };
 
