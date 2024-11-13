@@ -42,13 +42,11 @@ export const routesConfig = [
             element: <AllUsers/>,
             loader: allUsersloader
           },
-          { element: <PrivateRoute/>, children: [
-            { 
-              path: ":userId",
-              element: <Profile/>,
-              loader: profileLoader
-            }
-          ]},
+          { 
+            path: ":userId",
+            element: <Profile/>,
+            loader: profileLoader
+          },
         ]
       },
       {
