@@ -10,6 +10,7 @@ import NewPoll from "../pages/polls/NewPoll";
 import ShowPoll from "../pages/polls/ShowPoll";
 // Components
 import Layout from "../components/wrappers/Layout";
+import PrivateRoute from "../components/wrappers/PrivateRoute";
 // Loaders
 import { allUsersloader, allPollsLoader, profileLoader, showPollLoader } from "./loaders";
 
@@ -41,11 +42,13 @@ export const routesConfig = [
             element: <AllUsers/>,
             loader: allUsersloader
           },
-          { 
-            path: ":userId",
-            element: <Profile/>,
-            loader: profileLoader
-          }
+          { element: <PrivateRoute/>, children: [
+            { 
+              path: ":userId",
+              element: <Profile/>,
+              loader: profileLoader
+            }
+          ]},
         ]
       },
       {
@@ -56,10 +59,12 @@ export const routesConfig = [
             element: <AllPolls/>,
             loader: allPollsLoader
           },
-          { 
-            path: "new",
-            element: <NewPoll/> 
-          },
+          { element: <PrivateRoute/>, children: [
+            { 
+              path: "new",
+              element: <NewPoll/> 
+            }
+          ]},
           { 
             path: "edit",
             children: [
