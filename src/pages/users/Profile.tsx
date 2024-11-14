@@ -1,8 +1,12 @@
 import "./Profile.scss";
 // Routing
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 // Components
 import PollsList from "../../components/lists/PollsList";
+// Hooks
+import { useAuth } from "../../hooks/AuthProvider";
+// APIs
+import PollAPI from "../../apis/PollAPI";
 // Types
 import { User, Poll } from "../../types/index.ds";
 
@@ -14,6 +18,20 @@ interface LoaderData {
 const Profile = () => {
   // Hooks
   const {user, userPolls} = useLoaderData() as LoaderData;
+  const auth = useAuth();
+  const navigate = useNavigate();
+
+  const deletePoll = (pollId: string) => {
+    PollAPI.deletePoll(pollId)
+    .then(res => {
+      if(res.data.success) {
+        console.log("Poll deleted")
+        // Reload loader data
+        navigate('.', { replace: true });
+      }
+    })
+    .catch(err => console.log(err));
+  };
 
   return(
     <div id="profile">
@@ -25,7 +43,10 @@ const Profile = () => {
         </div>
       </div>
       <div id="profile-right">
-        <PollsList polls={userPolls}/>
+        <PollsList 
+          polls={userPolls}
+          privilege={auth.authUser && (auth.authUser._id === user._id) ? true : false}
+          deletePoll={deletePoll}/>
       </div>
     </div>
   )

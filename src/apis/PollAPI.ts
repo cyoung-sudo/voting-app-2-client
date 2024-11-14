@@ -39,6 +39,17 @@ const PollAPI = {
     return res;
   },
 
+  //----- Delete given poll
+  deletePoll: async (pollId: string) => {
+    const res = await api.request({
+      method: "DELETE",
+      url: `/api/polls/${pollId}`,
+      baseURL
+    });
+
+    return res;
+  },
+
   //----- Retrieve polls for given user
   getForUser: async (userId: string) => {
     const res = await api.request({

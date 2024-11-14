@@ -8,9 +8,11 @@ import { motion } from "framer-motion";
 
 interface PollsListProps {
   polls: Poll[];
+  privilege: boolean;
+  deletePoll?: (pollId: string) => void;
 }
 
-const PollsList: React.FC<PollsListProps> = ({polls}) => {
+const PollsList: React.FC<PollsListProps> = ({polls, privilege, deletePoll}) => {
   // Hooks
   const navigate = useNavigate();
   // Animation
@@ -35,6 +37,13 @@ const PollsList: React.FC<PollsListProps> = ({polls}) => {
           </div>
           <div className="pollsList-date">Joined: {new Date(poll.createdAt).toDateString()}</div>
           <div className="pollsList-btns">
+            {privilege &&  deletePoll &&
+              <button 
+                onClick={() => deletePoll(poll._id)}
+                className="pollsList-btns-delete btn-styling">
+                Delete
+              </button>
+            }
             <button className="btn-styling" onClick={() => navigate(`/polls/${poll._id}`)}>
               View
             </button>

@@ -33,7 +33,7 @@ const NavigationBar = () => {
               <NavDropdown.Divider />
               
               {auth.authUser &&
-                <LinkContainer to="/users/1">
+                <LinkContainer to={`/users/${auth.authUser._id}`}>
                   <NavDropdown.Item>Profile</NavDropdown.Item>
                 </LinkContainer>
               }

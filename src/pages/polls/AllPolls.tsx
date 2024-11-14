@@ -14,7 +14,9 @@ const AllPolls = () => {
     <div id="allPolls">
       <div id="allPolls-header">Polls</div>
       <div id="allPolls-list">
-        <PollsList polls={polls}/>
+        <PollsList 
+          polls={polls}
+          privilege={false}/>
       </div>
     </div>
   )

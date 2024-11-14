@@ -56,6 +56,11 @@
         background-color: var(--theme-color-1);
         color: white;
       }
+      .pollsList-btns-delete {
+        border-top-right-radius: var(--border-radius);
+        border-bottom-right-radius: 0;
+        background-color: crimson;
+      }
     }
   }
 }
