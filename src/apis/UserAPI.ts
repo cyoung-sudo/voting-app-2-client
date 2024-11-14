@@ -27,6 +27,17 @@ const UserAPI = {
     return res;
   },
 
+  //----- Delete user
+  deleteUser: async () => {
+    const res = await api.request({
+      method: "DELETE",
+      url: "/api/users",
+      baseURL
+    });
+
+    return res;
+  },
+
   //----- Retrieve user
   getUser: async (userId: string) => {
     const res = await api.request({

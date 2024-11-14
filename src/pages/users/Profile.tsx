@@ -6,6 +6,7 @@ import PollsList from "../../components/lists/PollsList";
 // Hooks
 import { useAuth } from "../../hooks/AuthProvider";
 // APIs
+import UserAPI from "../../apis/UserAPI";
 import PollAPI from "../../apis/PollAPI";
 // Types
 import { User, Poll } from "../../types/index.ds";
@@ -33,6 +34,17 @@ const Profile = () => {
     .catch(err => console.log(err));
   };
 
+  const deleteUser = () => {
+    UserAPI.deleteUser()
+    .then(res => {
+      if(res.data.success) {
+        console.log("User deleted");
+        navigate("/");
+      }
+    })
+    .catch(err => console.log(err));
+  }
+
   return(
     <div id="profile">
       <div id="profile-left">
@@ -41,6 +53,15 @@ const Profile = () => {
           <div>Joined: {new Date(user.createdAt).toDateString()}</div>
           <div>Polls Created: {userPolls.length}</div>
         </div>
+        {auth.authUser && (auth.authUser._id === user._id) &&
+          <div id="profile-btns">
+            <button 
+              onClick={deleteUser}
+              className="btn-styling">
+              Delete Account
+            </button>
+          </div>
+        }
       </div>
       <div id="profile-right">
         <PollsList 

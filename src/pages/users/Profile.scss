@@ -12,7 +12,11 @@
   justify-content: center;
   position: static;
   width: 90vw;
-  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+  border: 0.9px solid var(--theme-color-1);
+  border-radius: var(--border-radius);
+  background-color: var(--transparent-dark);
   text-align: center;
 }
 
@@ -25,7 +29,20 @@
 }
 
 #profile-info {
+  margin-bottom: 1rem;
+  padding: 0 1rem 0 1rem;
   font-weight: 300;
+}
+
+#profile-btns {
+  > button {
+    width: 100%;
+    border: 0;
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    background-color: crimson;
+    color: white;
+  }
 }
 
 /* Medium devices such as tablets (768px and up) */
@@ -41,7 +58,6 @@
     top: calc(var(--navbar-height) + 2rem);
     align-self: flex-start;
     width: 30vw;
-    text-align: left;
   }
 
   #profile-right {
@@ -62,7 +78,6 @@
     top: calc(var(--navbar-height) + 2rem);
     align-self: flex-start;
     width: 30vw;
-    text-align: left;
   }
 
   #profile-right {
