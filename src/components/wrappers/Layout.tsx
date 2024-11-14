@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom";
 import Navigationbar from "../navigation/NavigationBar";
 import Footer from "../navigation/Footer";
 import ScrollToTop from "../utils/ScrollToTop";
+import Background from "../static/Background";
 // Context
 import AuthProvider from "../../hooks/AuthProvider";
 // Animation
@@ -15,6 +16,7 @@ const Layout = () => {
     <AnimatePresence>
       <AuthProvider>
         <div id="layout">
+          <Background/>
           <Navigationbar/>
           <div id="layout-content">
             <ScrollToTop/>
