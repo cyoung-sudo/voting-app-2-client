@@ -1,0 +1,21 @@
+#home {
+  > div {
+    height: calc(100vh - var(--navbar-height));
+  }
+}
+
+#home-noAuth, #home-auth {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  text-align: center;
+  button {
+    margin: 0 0.5rem;
+    border: 0;
+    border-radius: var(--border-radius);
+    background-color: var(--theme-color-1);
+    color: white;
+  }
+}
