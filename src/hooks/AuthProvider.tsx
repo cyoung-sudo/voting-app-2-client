@@ -4,6 +4,8 @@ import { useEffect, useContext, createContext, useState, ReactNode } from "react
 import { useNavigate } from "react-router-dom";
 // APIs
 import AuthAPI from "../apis/AuthAPI.ts";
+// Context
+import { usePopup } from "./PopupProvider.tsx";
 // Types
 import { User } from "../types/index.ds.ts";
 
@@ -23,6 +25,7 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [authUser, setAuthUser] = useState(null);
   // Hooks
   const navigate = useNavigate();
+  const {openPopup} = usePopup();
 
   useEffect(() => {
     AuthAPI.getAuthUser()
@@ -40,9 +43,9 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       if(res.data.success) {
         setAuthUser(res.data.user);
         navigate("/");
-        console.log("User logged-in");
+        openPopup("User logged-in")
       } else {
-        console.log(res.data.message);
+        openPopup(res.data.message);
       }
     } catch(err) {
       console.log(err);
@@ -55,7 +58,7 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       if(res.data.success) {
         setAuthUser(null);
         navigate("/");
-        console.log("User logged-out");
+        openPopup("User logged-out")
       }
     } catch(err) {
       console.log(err);

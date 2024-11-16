@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // Components
 import AuthForm from "../../components/forms/AuthForm";
+// Hooks
+import { usePopup } from "../../hooks/PopupProvider";
 // APIs
 import UserAPI from "../../apis/UserAPI";
 
@@ -13,16 +15,17 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   // Hooks
   const navigate = useNavigate();
+  const {openPopup} = usePopup();
 
   const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     UserAPI.create(username, password)
     .then(res => {
       if(res.data.success) {
-        console.log("Created User")
         navigate("/auth/login");
+        openPopup("User created");
       } else {
-        console.log(res.data.message)
+        openPopup(res.data.message);
         // Reset input fields
         setUsername("");
         setPassword("");

@@ -6,25 +6,30 @@ import Navigationbar from "../navigation/NavigationBar";
 import Footer from "../navigation/Footer";
 import ScrollToTop from "../utils/ScrollToTop";
 import Background from "../static/Background";
+import Popup from "../popup/Popup";
 // Context
 import AuthProvider from "../../hooks/AuthProvider";
+import PopupProvider from "../../hooks/PopupProvider";
 // Animation
 import { AnimatePresence } from 'framer-motion';
 
 const Layout = () => {
   return (
     <AnimatePresence>
-      <AuthProvider>
-        <div id="layout">
-          <Background/>
-          <Navigationbar/>
-          <div id="layout-content">
-            <ScrollToTop/>
-            <Outlet/>
+      <PopupProvider>
+        <AuthProvider>
+          <div id="layout">
+            <Background/>
+            <Navigationbar/>
+            <Popup/>
+            <div id="layout-content">
+              <ScrollToTop/>
+              <Outlet/>
+            </div>
+            <Footer/>
           </div>
-          <Footer/>
-        </div>
-      </AuthProvider>
+        </AuthProvider>
+      </PopupProvider>
     </AnimatePresence>
   )
 };

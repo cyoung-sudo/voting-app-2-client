@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // Components
 import PollForm from "../../components/forms/PollForm";
+// Hooks
+import { usePopup } from "../../hooks/PopupProvider";
 // APIs
 import PollAPI from "../../apis/PollAPI";
 
@@ -15,16 +17,17 @@ const NewPoll = () => {
   const [choices, setChoices] = useState("");
   // Hooks
   const navigate = useNavigate();
+  const {openPopup} = usePopup();
 
   const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     PollAPI.create(title, desc, choices)
     .then(res => {
       if(res.data.success) {
-        console.log("Poll created");
         navigate("/polls");
+        openPopup("Poll created")
       } else {
-        console.log(res.data.message);
+        openPopup(res.data.message);
         // Reset fields
         setTitle("");
         setDesc("");
