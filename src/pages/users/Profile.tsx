@@ -1,10 +1,13 @@
 import "./Profile.scss";
+// React
+import { useState, useEffect } from "react";
 // Routing
 import { useLoaderData, useNavigate } from "react-router-dom";
 // Components
 import PollsList from "../../components/lists/PollsList";
 // Hooks
 import { useAuth } from "../../hooks/AuthProvider";
+import usePagination from "../../hooks/usePagination";
 // APIs
 import UserAPI from "../../apis/UserAPI";
 import PollAPI from "../../apis/PollAPI";
@@ -17,10 +20,25 @@ interface LoaderData {
 }
 
 const Profile = () => {
+  // Page content
+  const [pageContent, setPageContent] = useState<Poll[] | null>(null);
   // Hooks
   const {user, userPolls} = useLoaderData() as LoaderData;
   const auth = useAuth();
   const navigate = useNavigate();
+  const {currentPage, totalPages, currentData, nextPage, prevPage} = usePagination(userPolls, 5);
+
+  // Update content on page change
+  useEffect(() => {
+    let data = currentData() as Poll[];
+    setPageContent(data);
+    // Scroll to top
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }, [currentPage])
 
   const deletePoll = (pollId: string) => {
     PollAPI.deletePoll(pollId)
@@ -64,10 +82,29 @@ const Profile = () => {
         }
       </div>
       <div id="profile-right">
-        <PollsList 
-          polls={userPolls}
-          privilege={auth.authUser && (auth.authUser._id === user._id) ? true : false}
-          deletePoll={deletePoll}/>
+        {pageContent && 
+          <div id="profile-polls">
+            <PollsList 
+              polls={pageContent}
+              privilege={auth.authUser && (auth.authUser._id === user._id) ? true : false}
+              deletePoll={deletePoll}/>
+          </div>
+        }
+        <div id="profile-pagination">
+          <button 
+            id="allUsers-prev" 
+            className="btn-styling"
+            onClick={prevPage}>
+            Prev
+          </button>
+          <div>{currentPage} / {totalPages}</div>
+          <button 
+            id="allUsers-next" 
+            className="btn-styling"
+            onClick={nextPage}>
+            Next
+          </button>
+        </div>
       </div>
     </div>
   )
