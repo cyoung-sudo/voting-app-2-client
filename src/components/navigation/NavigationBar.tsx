@@ -24,7 +24,7 @@ const NavigationBar = () => {
           <LinkContainer 
             to="/users"
             onClick={e => e.preventDefault()} 
-            isActive={(match, location) => location.pathname.startsWith("/users")}>
+            isActive={(_match, location) => location.pathname.startsWith("/users")}>
             <NavDropdown title="Users" id="basic-nav-dropdown">
               <LinkContainer to="/users">
                 <NavDropdown.Item>All Users</NavDropdown.Item>
