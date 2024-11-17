@@ -4,4 +4,13 @@
   align-items: center;
   padding: 2rem 1rem;
   background-color: var(--transparent-light);
+  > a {
+    text-decoration: none;
+    color: black;
+    font-size: 0.9rem;
+    font-weight: 300;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
