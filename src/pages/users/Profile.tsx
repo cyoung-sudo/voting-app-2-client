@@ -60,8 +60,7 @@ const Profile = () => {
     UserAPI.deleteUser()
     .then(res => {
       if(res.data.success) {
-        navigate("/");
-        openPopup("User deleted");
+        auth.logout();
       }
     })
     .catch(err => console.log(err));
