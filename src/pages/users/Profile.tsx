@@ -2,11 +2,12 @@ import "./Profile.scss";
 // React
 import { useState, useEffect } from "react";
 // Routing
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate, useLocation } from "react-router-dom";
 // Components
 import PollsList from "../../components/lists/PollsList";
 // Hooks
 import { useAuth } from "../../hooks/AuthProvider";
+import { usePopup } from "../../hooks/PopupProvider";
 import usePagination from "../../hooks/usePagination";
 // APIs
 import UserAPI from "../../apis/UserAPI";
@@ -25,7 +26,9 @@ const Profile = () => {
   // Hooks
   const {user, userPolls} = useLoaderData() as LoaderData;
   const auth = useAuth();
+  const {openPopup} = usePopup();
   const navigate = useNavigate();
+  const location = useLocation();
   const {currentPage, totalPages, currentData, nextPage, prevPage} = usePagination(userPolls, 5);
 
   // Update content on page change
@@ -38,15 +41,15 @@ const Profile = () => {
       left: 0,
       behavior: 'smooth'
     });
-  }, [currentPage])
+  }, [currentPage, location])
 
   const deletePoll = (pollId: string) => {
     PollAPI.deletePoll(pollId)
     .then(res => {
       if(res.data.success) {
-        console.log("Poll deleted")
         // Reload loader data
         navigate('.', { replace: true });
+        openPopup("Poll deleted");
       }
     })
     .catch(err => console.log(err));
@@ -56,8 +59,8 @@ const Profile = () => {
     UserAPI.deleteUser()
     .then(res => {
       if(res.data.success) {
-        console.log("User deleted");
         navigate("/");
+        openPopup("User deleted");
       }
     })
     .catch(err => console.log(err));
