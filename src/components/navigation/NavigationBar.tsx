@@ -15,7 +15,7 @@ const NavigationBar = () => {
   return(
     <Navbar id="navigationBar" expand="lg" sticky="top">
       <LinkContainer to="/">
-        <Navbar.Brand id="navigationBar-brand">Polling App</Navbar.Brand>
+        <Navbar.Brand id="navigationBar-brand">Voting App</Navbar.Brand>
       </LinkContainer>
 
       <Navbar.Toggle id="navigationBar-toggle" aria-controls="basic-navbar-nav" />
