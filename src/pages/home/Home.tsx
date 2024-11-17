@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/AuthProvider";
 // Animation
 import { motion } from "framer-motion";
+// Styling Libraries
+import { LinearGradient } from 'react-text-gradients'
 
 const Home = () => {
   // Hooks
@@ -19,7 +21,11 @@ const Home = () => {
       <div id="home">
         {auth.authUser &&
           <div id="home-auth">
-            <h1>Start polling now</h1>
+            <h1>
+              <LinearGradient gradient={['to left', 'steelblue ,black']}>
+                Start polling now
+              </LinearGradient>
+            </h1>
             <p>Vote on existing polls or create your own</p>
             <div>
               <button
@@ -38,7 +44,11 @@ const Home = () => {
 
         {!auth.authUser &&
           <div id="home-noAuth">
-            <h1>Create an account or login</h1>
+            <h1>
+              <LinearGradient gradient={['to left', 'steelblue ,black']}>
+                Create an account or login
+              </LinearGradient>
+            </h1>
             <p>Join our community of pollsters</p>
             <div>
               <button
