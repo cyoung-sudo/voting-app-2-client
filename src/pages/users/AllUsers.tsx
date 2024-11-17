@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 // Components
 import UsersList from "../../components/lists/UsersList";
+import EmptyList from "../../components/static/EmptyList";
 // Hooks
 import usePagination from "../../hooks/usePagination";
 // Types
@@ -32,11 +33,14 @@ const AllUsers = () => {
   return(
     <div id="allUsers">
       <div id="allUsers-header">Users</div>
-      {pageContent &&
-        <div id="allUsers-list">
+      <div id="allUsers-list">
+        {pageContent && (users.length > 0) &&
           <UsersList users={pageContent} />
-        </div>
-      }
+        }
+        {(users.length <= 0) &&
+          <EmptyList mode="allUsers"/>
+        }
+      </div>
       <div id="allUsers-pagination">
         <button 
           id="allUsers-prev" 

@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useLoaderData, useNavigate, useLocation } from "react-router-dom";
 // Components
 import PollsList from "../../components/lists/PollsList";
+import EmptyList from "../../components/static/EmptyList";
 // Hooks
 import { useAuth } from "../../hooks/AuthProvider";
 import { usePopup } from "../../hooks/PopupProvider";
@@ -85,14 +86,17 @@ const Profile = () => {
         }
       </div>
       <div id="profile-right">
-        {pageContent && 
-          <div id="profile-polls">
+        <div id="profile-polls">
+          {pageContent && (userPolls.length > 0) &&
             <PollsList 
               polls={pageContent}
               privilege={auth.authUser && (auth.authUser._id === user._id) ? true : false}
               deletePoll={deletePoll}/>
-          </div>
-        }
+          }
+          {(userPolls.length <= 0) &&
+            <EmptyList mode="userPolls"/>
+          }
+        </div>
         <div id="profile-pagination">
           <button 
             id="allUsers-prev" 

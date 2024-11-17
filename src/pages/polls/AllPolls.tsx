@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 // Components
 import PollsList from "../../components/lists/PollsList";
+import EmptyList from "../../components/static/EmptyList";
 // Hooks
 import usePagination from "../../hooks/usePagination";
 // Types
@@ -32,13 +33,16 @@ const AllPolls = () => {
   return(
     <div id="allPolls">
       <div id="allPolls-header">Polls</div>
-      {pageContent &&
-        <div id="allPolls-list">
+      <div id="allPolls-list">
+        {pageContent && (polls.length > 0) &&
           <PollsList 
             polls={pageContent}
             privilege={false}/>
-        </div>
-      }
+        }
+        {(polls.length <= 0) &&
+          <EmptyList mode="allPolls"/>
+        }
+      </div>
       <div id="allPolls-pagination">
         <button 
           id="allPolls-prev" 
