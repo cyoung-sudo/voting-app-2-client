@@ -18,6 +18,10 @@
 
 In the project directory, you can run:
 
+### `npm run build" : "tsc -b && vite build"`,
+
+Creates production build in the "./dist" directory.
+
 ### `npm run dev" : "vite"`,
 
 Runs the app in the browser on [http://127.0.0.1:5173](http://127.0.0.1:5173).

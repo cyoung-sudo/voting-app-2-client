@@ -43,7 +43,7 @@ const NavigationBar = () => {
           <LinkContainer 
             to="/polls"
             onClick={e => e.preventDefault()} 
-            isActive={(match, location) => location.pathname.startsWith("/polls")}>
+            isActive={(_match, location) => location.pathname.startsWith("/polls")}>
             <NavDropdown title="Polls" id="basic-nav-dropdown">
               <LinkContainer to="/polls">
                 <NavDropdown.Item>All Polls</NavDropdown.Item>
