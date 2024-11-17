@@ -10,6 +10,7 @@ import VoteForm from "../../components/forms/VoteForm";
 import PollAPI from "../../apis/PollAPI";
 // Hooks
 import { useAuth } from "../../hooks/AuthProvider";
+import { usePopup } from "../../hooks/PopupProvider";
 // Types
 import { Poll } from "../../types/index.ds";
 
@@ -28,6 +29,7 @@ const ShowPoll = () => {
   const auth = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  const {openPopup} = usePopup();
 
   useEffect(() => {
     // Format data for chart
@@ -46,11 +48,11 @@ const ShowPoll = () => {
       PollAPI.vote(poll._id, choice)
       .then(res => {
         if(res.data.success) {
-          console.log("voted");
           // Reload loader data
           navigate('.', { replace: true });
+          openPopup("Voted")
         } else {
-          console.log(res.data.message);
+          openPopup(res.data.message);
         }
       })
       .catch(err => console.log(err));

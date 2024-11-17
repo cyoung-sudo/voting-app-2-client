@@ -5,7 +5,6 @@ import Signup from "../pages/auth/Signup";
 import AllUsers from "../pages/users/AllUsers";
 import Profile from "../pages/users/Profile";
 import AllPolls from "../pages/polls/AllPolls";
-import EditPoll from "../pages/polls/EditPoll";
 import NewPoll from "../pages/polls/NewPoll";
 import ShowPoll from "../pages/polls/ShowPoll";
 // Components
@@ -63,15 +62,6 @@ export const routesConfig = [
               element: <NewPoll/> 
             }
           ]},
-          { 
-            path: "edit",
-            children: [
-              { 
-                path: ":pollId",
-                element: <EditPoll/>
-              }
-            ]
-          },
           { 
             path: ":pollId",
             element: <ShowPoll/>,
